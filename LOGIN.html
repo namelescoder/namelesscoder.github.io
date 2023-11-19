@@ -1,40 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Log In!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://i.ibb.co/W0GX0mC/22529.jpg'); /* Replace '' with the path to your background image */
+            background-size: cover;
+            background-position: center;
             margin: 0;
             padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: #5a5a5a;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        h2 {
+            color: rgb(255, 255, 255);
         }
         form {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 100px;
         }
         input[type="text"], input[type="password"] {
-            margin-bottom: 20px;
+            margin: 10px 0;
             padding: 10px;
             width: 250px;
+            border: 1px solid #a3a3a3;
+            border-radius: 4px;
         }
         input[type="submit"] {
+            margin-top: 20px;
             padding: 10px 20px;
-            background-color: #4B0082;
-            color: #FFFFFF;
+            background-color: #747374;
+            color: #fff;
             border: none;
+            border-radius: 4px;
             cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #2C003E;
         }
     </style>
 </head>
 <body>
-    <h2>Roblox Resurgence 2016</h2>
-    <form>
-        <input type="text" placeholder="Username" required><br>
-        <input type="password" placeholder="Password" required><br>
-        <input type="submit" value="Login">
-    </form>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+        <p class="error-message" id="errorMessage"></p>
+    </div>
+
+    <script>
+  // Define an object to store user credentials and redirect URLs
+  const users = {
+        admin: { password: "1234", redirectUrl: "admin-page.html" },
+        Roblox: { password: "1234", redirectUrl: "user1-page.html" },
+        Test: { password: "1234", redirectUrl: "user2-page.html" },
+        Guest: { password: "1234", redirectUrl: "admin-page.html" },
+        user1: { password: "1234", redirectUrl: "user1-page.html" },
+        user2: { password: "1234", redirectUrl: "user2-page.html" },
+        admin: { password: "1234", redirectUrl: "admin-page.html" },
+        user1: { password: "1234", redirectUrl: "user1-page.html" },
+        user2: { password: "1234", redirectUrl: "user2-page.html" },
+        admin: { password: "1234", redirectUrl: "admin-page.html" },
+        user1: { password: "1234", redirectUrl: "user1-page.html" },
+        user2: { password: "1234", redirectUrl: "user2-page.html" },
+        admin: { password: "1234", redirectUrl: "admin-page.html" },
+        user1: { password: "1234", redirectUrl: "user1-page.html" },
+        user2: { password: "1234", redirectUrl: "user2-page.html" },
+        admin: { password: "1234", redirectUrl: "admin-page.html" },
+        user1: { password: "1234", redirectUrl: "user1-page.html" },
+        user2: { password: "1234", redirectUrl: "user2-page.html" },
+        admin: { password: "1234", redirectUrl: "admin-page.html" },
+        user1: { password: "1234", redirectUrl: "user1-page.html" },
+        user2: { password: "1234", redirectUrl: "user2-page.html" },
+        // Add more users as needed
+    };
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        // Check if the entered credentials match any user in the 'users' object
+        if (users[username] && users[username].password === password) {
+            // Redirect to the corresponding page after successful login
+            window.location.href = users[username].redirectUrl;
+        } else {
+            document.getElementById('errorMessage').innerText = 'Try Again! User or Password';
+        }
+    });
+    </script>
 </body>
 </html>
